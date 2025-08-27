@@ -18,16 +18,6 @@ detailed error handling for invalid or missing data.
 
 ------------------------------------------------------------------------
 
-### Running the Sample Project
-
-1. Open the solution in Visual Studio.  
-2. Right-click on **SampleConsole** → **Set as Startup Project**.  
-3. Build the solution (`Ctrl+Shift+B`).  
-4. Copy your `Patients.xlsx` file into: -SampleConsole/bin/Debug/net8.0/
-5. Run the Console App (`F5`).
-
-------------------------------------------------------------------------
-
 ## 📦 Installation
 
 Install from **NuGet**:
@@ -80,6 +70,15 @@ foreach (var error in result.Errors)
 
 ------------------------------------------------------------------------
 
+### Running the Sample Project
+
+1. Open the solution in Visual Studio.  
+2. Right-click on **SampleConsole** → **Set as Startup Project**.  
+3. Build the solution (`Ctrl+Shift+B`).  
+4. Copy your `Patients.xlsx` file into: -SampleConsole/bin/Debug/net8.0/
+5. Run the Console App (`F5`).
+
+------------------------------------------------------------------------
 ## 🖥️ Sample Console App
 
 The repository also contains a **SampleConsole** project that
