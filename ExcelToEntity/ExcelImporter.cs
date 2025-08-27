@@ -85,47 +85,53 @@ namespace ExcelToEntity
 
         private object? ConvertCell(XLCellValue cellValue, Type targetType)
         {
-            if (cellValue.IsBlank) return null;
+            // Treat blank cells as null
+            if (cellValue.IsBlank)
+                return null;
 
+            // Handle nullable types
             var underlyingType = Nullable.GetUnderlyingType(targetType) ?? targetType;
 
             try
             {
-                if (underlyingType == typeof(string))
-                    return cellValue.GetText();
-
-                if (underlyingType.IsEnum)
-                    return Enum.Parse(underlyingType, cellValue.GetText(), true);
-
-                if (underlyingType == typeof(DateTime))
-                    return cellValue.GetDateTime();
-
-                if (underlyingType == typeof(int))
+                switch (underlyingType)
                 {
-                    if (cellValue.Type == XLDataType.Number)
-                        return (int)cellValue.GetNumber();
+                    case Type t when t == typeof(string):
+                        return cellValue.Type switch
+                        {
+                            XLDataType.Number => cellValue.GetNumber().ToString(),
+                            XLDataType.DateTime => cellValue.GetDateTime().ToString("yyyy-MM-dd"),
+                            XLDataType.Boolean => cellValue.GetBoolean().ToString(),
+                            _ => cellValue.GetText()
+                        };
 
-                    return int.Parse(cellValue.GetText());
+                    case Type t when t.IsEnum:
+                        return Enum.Parse(underlyingType, cellValue.GetText(), true);
+
+                    case Type t when t == typeof(DateTime):
+                        if (cellValue.Type == XLDataType.DateTime)
+                            return cellValue.GetDateTime();
+                        return DateTime.Parse(cellValue.GetText());
+
+                    case Type t when t == typeof(int):
+                        if (cellValue.Type == XLDataType.Number)
+                            return (int)cellValue.GetNumber();
+                        return int.Parse(cellValue.GetText());
+
+                    case Type t when t == typeof(double):
+                        if (cellValue.Type == XLDataType.Number)
+                            return cellValue.GetNumber();
+                        return double.Parse(cellValue.GetText());
+
+                    case Type t when t == typeof(bool):
+                        if (cellValue.Type == XLDataType.Boolean)
+                            return cellValue.GetBoolean();
+                        return bool.Parse(cellValue.GetText());
+
+                    default:
+                        // fallback for other types
+                        return Convert.ChangeType(cellValue.GetText(), underlyingType);
                 }
-
-                if (underlyingType == typeof(double))
-                {
-                    if (cellValue.Type == XLDataType.Number)
-                        return cellValue.GetNumber();
-
-                    return double.Parse(cellValue.GetText());
-                }
-
-                if (underlyingType == typeof(bool))
-                {
-                    if (cellValue.Type == XLDataType.Boolean)
-                        return cellValue.GetBoolean();
-
-                    return bool.Parse(cellValue.GetText());
-                }
-
-                // fallback for other types
-                return Convert.ChangeType(cellValue.GetText(), underlyingType);
             }
             catch (Exception ex)
             {
@@ -134,6 +140,7 @@ namespace ExcelToEntity
                 );
             }
         }
+
 
 
     }
