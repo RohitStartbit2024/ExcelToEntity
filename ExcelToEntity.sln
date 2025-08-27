@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelToEntity", "ExcelToEntity\ExcelToEntity.csproj", "{520009C5-125B-4B54-A5DC-AB2189650A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "SampleConsole\SampleConsole.csproj", "{EEA5D1B1-B21A-42ED-B7A9-62229F247206}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{520009C5-125B-4B54-A5DC-AB2189650A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520009C5-125B-4B54-A5DC-AB2189650A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520009C5-125B-4B54-A5DC-AB2189650A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520009C5-125B-4B54-A5DC-AB2189650A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA5D1B1-B21A-42ED-B7A9-62229F247206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA5D1B1-B21A-42ED-B7A9-62229F247206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA5D1B1-B21A-42ED-B7A9-62229F247206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA5D1B1-B21A-42ED-B7A9-62229F247206}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FF6DA25-83D0-4ADA-89C2-592DAAB26ABD}
+	EndGlobalSection
+EndGlobal
