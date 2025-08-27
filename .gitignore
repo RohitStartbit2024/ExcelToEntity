@@ -17,3 +17,7 @@
 /ExcelToEntity/nugetOrgKeys.txt
 /SampleConsole/bin
 /SampleConsole/obj
+/ExcelToEntityApiUsage/bin/Debug/net8.0
+/ExcelToEntityApiUsage/Migrations
+/ExcelToEntityApiUsage/obj
+/ExcelToEntityApiUsage/Properties
